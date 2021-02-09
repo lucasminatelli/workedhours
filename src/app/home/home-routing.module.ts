@@ -1,16 +1,28 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomePage } from './home.page';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { HomePage } from "./home.page";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: HomePage,
-  }
+  },
+  {
+    path: "companies",
+    loadChildren: () =>
+      import("../companies/companies.module").then(
+        (m) => m.CompaniesPageModule
+      ),
+  },
+  {
+    path: "jobs",
+    loadChildren: () =>
+      import("../jobs/jobs.module").then((m) => m.JobsPageModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class HomePageRoutingModule {}

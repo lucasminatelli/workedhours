@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>companies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let c of arrayCompanies">
+      <ion-text (click)="openCompanyDetail(c)">{{c.company_name}}</ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

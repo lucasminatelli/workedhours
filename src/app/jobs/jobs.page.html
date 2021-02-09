@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>jobs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let j of arrayJobs">
+      <ion-text (click)="openJobDetail(j)">{{j.job_description}}</ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

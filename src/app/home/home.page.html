@@ -1,32 +1,12 @@
 <ion-content [fullscreen]="false">
   <ion-grid>
-    <ion-col>
-      <ion-card>
-        <ion-text>exemplo1</ion-text>
-      </ion-card>
-      <ion-card>
-        <ion-text>exemplsagsdfgsdfo1 </ion-text>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-text>exemplo1</ion-text>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-text>exemplo1</ion-text>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-text>exemplo1</ion-text>
-      </ion-card>
-    </ion-col>
-    <ion-col>
-      <ion-card>
-        <ion-text>exemplo1</ion-text>
-      </ion-card>
-    </ion-col>
+    <ion-card *ngFor="let c of arrayCompanies" (click)="openCompanies()">
+      <ion-card-title>{{c.company_name}}</ion-card-title>
+    </ion-card>
+  </ion-grid>
+  <ion-grid>
+    <ion-card *ngFor="let j of arrayJobs" (click)="openJobs()">
+      <ion-card-title>{{j.job_description}}</ion-card-title>
+    </ion-card>
   </ion-grid>
 </ion-content>

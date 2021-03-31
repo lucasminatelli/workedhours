@@ -1,4 +1,7 @@
 <ion-content [fullscreen]="false">
+  <ion-title>
+    Worked Hours
+  </ion-title>
   <ion-grid>
     <ion-card *ngFor="let c of arrayCompanies" (click)="openCompanies()">
       <ion-card-title>{{c.company_name}}</ion-card-title>
@@ -7,6 +10,11 @@
   <ion-grid>
     <ion-card *ngFor="let j of arrayJobs" (click)="openJobs()">
       <ion-card-title>{{j.job_description}}</ion-card-title>
+    </ion-card>
+  </ion-grid>
+  <ion-grid>
+    <ion-card *ngFor="let e of arrayEmployees" (click)="openEmployees()">
+      <ion-card-title>{{e.employee_description}}</ion-card-title>
     </ion-card>
   </ion-grid>
 </ion-content>

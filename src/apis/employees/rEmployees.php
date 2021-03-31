@@ -10,17 +10,14 @@ if (!$con) {
     echo "Ocorreu um erro na conexão com o banco de dados.";
 } else {
     //----- Variáveis  -----//
-    $postdata = file_get_contents("php://input");
-    $r = json_decode($postdata);
-    $company_id = $r->company_id;
-    $company_name = $r->company_name;
+    $query = "SELECT * FROM employees";
 
-    //----- UPDATE -----//
-    $query = " UPDATE companies set 
-            company_name='$company_name'
-            WHERE company_id='$company_id'
-        ";
+    //----- SELECT workedhours -----//
+    $data = array();
     mysqli_set_charset($con, 'uft8');
     $q = mysqli_query($con, $query);
-    echo "Alterado com sucesso";
+    while ($row = mysqli_fetch_object($q)) {
+        $data[] = $row;
+    }
+    echo json_encode($data, JSON_NUMERIC_CHECK);
 }

@@ -19,10 +19,15 @@ const routes: Routes = [
     loadChildren: () =>
       import("../jobs/jobs.module").then((m) => m.JobsPageModule),
   },
+  {
+    path: "employees",
+    loadChildren: () =>
+      import("../employees/employees.module").then((m) => m.EmployeesPageModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomePageRoutingModule {}
+export class HomePageRoutingModule { }

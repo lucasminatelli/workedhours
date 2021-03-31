@@ -12,19 +12,13 @@ if (!$con) {
     //----- Variáveis  -----//
     $postdata = file_get_contents("php://input");
     $r = json_decode($postdata);
-    $job_id = $r->job_id;
-    $company_id = $r->company_id;
-    $job_description = $r->job_description;
-    $job_start = $r->job_start;
-    $job_end = $r->job_end;
+    $employee_id = $r->employee_id;
+    $employee_description = $r->employee_description;
 
     //----- UPDATE -----//
-    $query = " UPDATE jobs set 
-            company_id='$company_id',
-            job_description='$job_description',
-            job_start='$job_start',
-            job_end='$job_end'
-            WHERE company_id='$job_id'
+    $query = " UPDATE employees set 
+            employee_description='$employee_description'
+            WHERE employee_id='$employee_id'
         ";
     mysqli_set_charset($con, 'uft8');
     $q = mysqli_query($con, $query);

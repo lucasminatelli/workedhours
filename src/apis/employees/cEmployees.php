@@ -12,22 +12,14 @@ if (!$con) {
     //----- Variáveis  -----//
     $postdata = file_get_contents("php://input");
     $r = json_decode($postdata);
-    $company_id = $r->company_id;
-    $job_description = $r->job_description;
-    $job_start = $r->job_start;
-    $job_end = $r->job_end;
+    $employee_id = $r->employee_id;
+    $employee_description = $r->employee_description;
 
     //----- INSERT -----//
-    $query = " INSERT INTO jobs(
-        `company_id`,
-        `job_description`,
-        `job_start`,
-        `job_end`
+    $query = " INSERT INTO employees(
+        `employee_description`
     ) VALUES (
-        '$company_id',
-        '$job_description',
-        '$job_start',
-        '$job_end'
+        '$employee_description'
     )
     ";
     mysqli_set_charset($con, 'uft8');

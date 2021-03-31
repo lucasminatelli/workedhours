@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NavigationExtras, Router } from "@angular/router";
 import { CompaniesService } from "../common/services/companies.service";
+import { EmployeesService } from "../common/services/employees.service";
 import { JobsService } from "../common/services/jobs.service";
 
 @Component({
@@ -12,12 +13,14 @@ export class HomePage {
   constructor(
     private companiesService: CompaniesService,
     private jobsService: JobsService,
+    private employeesService: EmployeesService,
     private router: Router
-  ) {}
+  ) { }
 
   //** variaveis **//
   private arrayCompanies: Array<string>;
   private arrayJobs: Array<string>;
+  private arrayEmployees: Array<string>;
 
   ngOnInit() {
     this.companiesService.rCompanies().subscribe((data: any) => {
@@ -25,6 +28,9 @@ export class HomePage {
     });
     this.jobsService.rJobs().subscribe((data: any) => {
       this.arrayJobs = data;
+    });
+    this.employeesService.rEmployees().subscribe((data: any) => {
+      this.arrayEmployees = data;
     });
   }
 
@@ -44,5 +50,14 @@ export class HomePage {
       },
     };
     this.router.navigate(["home/companies"], navigationExtras);
+  }
+
+  openEmployees() {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.arrayEmployees),
+      },
+    };
+    this.router.navigate(["home/employees"], navigationExtras);
   }
 }
